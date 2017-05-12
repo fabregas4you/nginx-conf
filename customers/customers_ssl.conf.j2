@@ -1,0 +1,35 @@
+    server {
+        listen       {{ azure.YOUR_IP }}:{{ azure.YOUR_PORT }} ssl;
+        server_name  localhost;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        location / {
+            root   {{ azure.YOUR_DOCUMENT_DIR }}/public;
+            index  index.html index.htm;
+        }
+
+        #error_page  404              /404.html;
+
+        # redirect server error pages to the static page /50x.html
+        #
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+        # deny access to .htaccess files, if Apache's document root
+        # concurs with nginx's one
+        #
+        #location ~ /\.ht {
+        #    deny  all;
+        #}
+  
+        ## certs 
+        server_name {{ azure.server_name }};
+        ssl_certificate {{ azure.cert_file }};
+        ssl_certificate_key {{ azure.key_file }};
+
+    }
