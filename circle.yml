@@ -8,9 +8,12 @@ dependencies:
     - pip install --upgrade setuptools
     - echo $ANSIBLE_VAULT_PASSWORD > ~/.vault_password.txt
 
+test:
+  post:
+    - ansible-playbook -i staging  nginx-conf.yml --vault-password-file ~/.vault_password.txt --syntax-check
+
 deployment:  
   staging:
     branch: master
     commands:
-      # - ansible-playbook -i staging  nginx-conf.yml --vault-password-file ~/.vault_password.txt --check -vvv
-      - ansible-playbook -i staging  nginx-conf.yml --vault-password-file ~/.vault_password.txt --syntax-check
+      - ansible-playbook -i staging  nginx-conf.yml --vault-password-file ~/.vault_password.txt --check -vvv
