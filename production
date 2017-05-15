@@ -1,5 +1,19 @@
-[nginx-conf]
+[nginx-conf-use1]
+
+[nginx-conf-use2]
+
+[nginx-conf-usw1]
+
+[nginx-conf-usw2]
 # 104.41.187.223  ansible_ssh_user=mod_admin  ansible_ssh_private_key_file=/var/tmp/Azure/ssh/id_rsa
-# 23.102.66.23 ansible_ssh_user=mod_admin ansible_ssh_private_key_file=/var/tmp/Azure/ssh/id_rsa
+
+[nginx-conf-jae1]
+
+[nginx-conf-jaw1]
+
+## all nginx nodes
+[nginx-conf:children]
+nginx-conf-usw2
+
 [all:vars]
 stage=production
