@@ -1,0 +1,14 @@
+- name: customers template copy
+  template: >
+    src=customers.conf.j2
+    dest=/opt/nginx/conf/customers/{{ nginx.customer_fqdn }}.conf
+    backup=yes
+  notify: restart nginx
+
+- name: copy TLS key
+  copy: src=files/{{ nginx.key }}.key dest=/opt/nginx/conf/ssl/{{ nginx.all_keys }} owner=root mode=0600
+  notify: restart nginx
+
+- name: copy TLS certificate
+  copy: src=files/{{ nginx.crt }}.crt dest=/opt/nginx/conf/ssl/{{ nginx.all_crts }}
+  notify: restart nginx

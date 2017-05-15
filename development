@@ -1,0 +1,4 @@
+[nginx-conf]
+104.41.187.223  ansible_ssh_user=mod_admin  ansible_ssh_private_key_file=/var/tmp/Azure/ssh/id_rsa
+[all:vars]
+stage=development

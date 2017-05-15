@@ -1,0 +1,34 @@
+## common
+
+## kernel
+kernel:
+  - { param: 'kernel.msgmnb', value: '65536' }
+  - { param: 'kernel.msgmax', value: '65536' }
+  - { param: 'kernel.shmmax', value: '68719476736' }
+  - { param: 'kernel.shmall', value: '4294967296' }
+  - { param: 'net.ipv4.tcp_tw_reuse', value: '1' }
+  - { param: 'net.ipv4.tcp_syncookies', value: '1' }
+
+## limits
+limits_configs:
+
+## nginx
+nginx:
+ build:
+ conf:
+
+
+
+## fleuntd
+td_agent:
+  proxy_host: "http://proxy.sample.net:8080"
+  plugins:
+    - { name: 'fluent-plugin-elasticsearch' }
+    - { name: 'fluent-plugin-azurestorage' }
+    - { name: 'fluent-plugin-azureeventhubs' }
+    - { name: 'fluent-plugin-redshift' }
+    - { name: 'fluent-plugin-s3' }
+  position_path: /var/log/td-agent/position
+  aggregator:
+    ipaddr: 127.0.0.1
+    port: 16000

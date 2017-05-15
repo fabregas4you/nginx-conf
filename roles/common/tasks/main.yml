@@ -1,0 +1,33 @@
+---
+- name: enable yum on HOP
+  lineinfile: >-
+    dest='/etc/yum.conf'
+    state=present
+    backrefs=yes
+    regexp='^#?\proxy\=http\:\/\/proxy\.example\.net\:8080\/'
+    line='<your proxy>:8080/'
+- name: static route for PBB
+  lineinfile: >-
+    dest='/etc/sysconfig/static-routes'
+    state=present
+    # line='any net 10.119.33.0 netmask 255.255.255.0 gw 10.119.36.1 dev eth0'
+    line='<your routes>'
+- name: cron for logrotation
+  lineinfile: >-
+    dest='/etc/crontab'
+    state=present
+    line={{ item }}
+  with_items:  
+     # - '10 9 * * 1-5 admin /var/service/pbb-hopgate/sbin/revproxy_watchdog.sh -a  >/var/tmp/revproxy_watchdog.log 2>&1'
+     - "<your crontask>">
+- name: proc monitor for AMS
+  lineinfile: >-
+    dest='/etc/snmp/snmpd.conf'
+    state=present
+    backup=yes
+    line={{ item }}
+  with_items:  
+    - '#UOM'
+    - 'proc td-agent'
+  #notify:
+  #  - restart snmpd
