@@ -12,4 +12,5 @@ deployment:
   staging:
     branch: master
     commands:
-      - ansible-playbook nginx-conf.yml -i staging --vault-password-file ~/.vault_password.txt -check -vvv
+      # - ansible-playbook -i staging  nginx-conf.yml --vault-password-file ~/.vault_password.txt --check -vvv
+      - ansible-playbook -i staging  nginx-conf.yml --vault-password-file ~/.vault_password.txt --syntax-check
