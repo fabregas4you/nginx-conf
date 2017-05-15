@@ -18,7 +18,3 @@ nginx-conf-usw2
 
 [all:vars]
 stage=staging
-ansible_connection=ssh
-ansible_ssh_user=mod_admin
-ansible_ssh_pass=mogitate5814!
-ansible_sudo_pass=
