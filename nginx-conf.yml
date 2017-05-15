@@ -3,6 +3,7 @@
   # remote_user: root
   vars_files:
     - host_vars/{{ stage }}.yml
+    - group_vars/{{ stage }}.yml
   roles:
     # - common
     # - kernel
