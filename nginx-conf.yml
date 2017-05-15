@@ -1,11 +1,10 @@
 ---
-- hosts: nerimaNHN-generator
+- hosts: nginx-conf
   remote_user: root
   vars_files:
     - host_vars/{{ stage }}.yml
   roles:
-    - common
-    - kernel
-    - td-agent
-    - lvs
-    - generator
+    # - common
+    # - kernel
+    # - td-agent
+    - nginx-conf

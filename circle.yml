@@ -1,0 +1,14 @@
+machine:  
+  python:
+    version: 2.7.10
+
+dependencies:  
+  pre:
+    - pip install ansible
+    - pip install --upgrade setuptools
+
+deployment:  
+  staging:
+    branch: master
+    commands:
+      - ansible-playbook nginx-conf.yml -i staging --check
