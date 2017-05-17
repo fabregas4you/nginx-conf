@@ -5,8 +5,8 @@
 [nginx-conf-usw1]
 
 [nginx-conf-usw2]
-# 104.41.187.223  ansible_ssh_user=mod_admin  ansible_ssh_private_key_file=/var/tmp/Azure/ssh/id_rsa
-23.102.66.23
+# xxx.xxx.xxx.xxx  ansible_ssh_user=XXXXXXX  ansible_ssh_private_key_file=/var/tmp/Azure/ssh/id_rsa
+xxx.xxx.xxx.xxx
 
 [nginx-conf-jae1]
 
