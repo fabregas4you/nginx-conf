@@ -1,6 +1,6 @@
     server {
-        listen       {{ azure.YOUR_IP }}:{{ azure.YOUR_PORT }} ssl;
-        server_name  localhost;
+        listen       {{ azure.YOUR_IP }}:{{ azure.YOUR_PORT }};
+        server_name  {{ YOUR HOSTNAME }};
 
         #charset koi8-r;
 
@@ -9,7 +9,9 @@
         location / {
             root   {{ azure.YOUR_DOCUMENT_DIR }}/public;
             index  index.html index.htm;
+            limit_req   zone=one  burst=1 nodelay;
         }
+        limit_req_status 444;
 
         #error_page  404              /404.html;
 
@@ -26,10 +28,4 @@
         #location ~ /\.ht {
         #    deny  all;
         #}
-  
-        ## certs 
-        server_name {{ azure.server_name }};
-        ssl_certificate {{ azure.cert_file }};
-        ssl_certificate_key {{ azure.key_file }};
-
     }

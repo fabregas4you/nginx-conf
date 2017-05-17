@@ -16,8 +16,12 @@ limits_configs:
 nginx:
  build:
  conf:
-
-
+   hostname:
+     - { name: azure.hi-ga.io }
+     - { name: azure.hi-ga.to }
+   AZURE:
+     hostname:
+     port:
 
 ## fleuntd
 td_agent:
